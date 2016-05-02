@@ -20,6 +20,10 @@ Since online users following the course via Internet and iTunesU cannot access t
 <img src="https://github.com/oliverbarreto/CS193p2016_Calculator1/blob/master/Calculator1.png" width="30%">
 <img src="https://github.com/oliverbarreto/CS193p2016_Calculator1/blob/master/Calculator2.png" width="30%">
 
+### License
+Stanford University code on iTunes and Its blog follows the following license. This work by Stanford University is licensed under a [Creative Commons Attribution-Noncommercial-Share Alike 3.0 United States License](http://creativecommons.org/licenses/by-nc-sa/3.0/us/). Based on a work at [cs193p.stanford.edu](http://cs193p.stanford.edu/)
+
+My code is also licensed under the [Creative Commons Attribution-Noncommercial-Share Alike 3.0 United States License](http://creativecommons.org/licenses/by-nc-sa/3.0/us/)
 <!---
 ![Calculator](https://github.com/oliverbarreto/CS193p2016_Calculator1/blob/master/Calculator1.png "Logo Title Text 1")
 -->
