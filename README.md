@@ -28,7 +28,7 @@ My code is also licensed under the [Creative Commons Attribution-Noncommercial-S
 7. Use the two properties above to implement a UILabel in your UI which shows the sequence of operands and operations that led to what is showing in the display. If isPartialResult, put . . . on the end of the UILabel, else put =. If the userIsInTheMiddleOfTypingANumber, you can leave the UILabel showing whatever was there before the user started typing the number. Examples:
 	1. touching 7 + would show “7 + ...” (with 7 still in the display)
 	2. 7 + 9 would show “7 + ...” (9 in the display)
-* 7 + 9 = would show “7 + 9 =” (16 in the display)
+	* 7 + 9 = would show “7 + 9 =” (16 in the display)
 * + 9 = √ would show “√(7 + 9) =” (4 in the display)
 * 7 + 9 √ would show “7 + √(9) ...” (3 in the display)
 * 7 + 9 √ = would show “7 + √(9) =“ (10 in the display)
