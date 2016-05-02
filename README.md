@@ -19,5 +19,5 @@ Since online users following the course via Internet and iTunesU cannot access t
 ### Projects
 #### Project Assigment 1: Calculator
 []
-<img src="Calculator/Calculator1.png" width="30%">
-<img src="Calculator/Calculator2.png" width="30%">
+<img src="https://github.com/oliverbarreto/CS193p2016_Calculator1/blob/master/Calculator1.png" width="30%">
+<img src="https://github.com/oliverbarreto/CS193p2016_Calculator1/blob/master/Calculator2.png" width="30%">
