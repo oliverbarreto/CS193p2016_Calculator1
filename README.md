@@ -40,3 +40,11 @@ My code is also licensed under the [Creative Commons Attribution-Noncommercial-S
 	* 4 + 5 × 3 = would show “4 + 5 × 3 =” (27 in the display)
 	* 4 + 5 × 3 = could also show “(4 + 5) × 3 =” if you prefer (27 in the display)
 8. Add a C button that clears everything (your display, the new UILabel you added above, etc.). The Calculator should be in the same state as it is at application startup after you touch this new button.
+
+
+###Extra Credit
+We try to make Extra Credit be opportunities to expand on what you’ve learned this week. Attempting at least some of these each week is highly recommended to get the most out of this course.
+1. Implement a “backspace” button for the user to touch if they hit the wrong digit button. This is not intended to be “undo,” so if the user hits the wrong operation button, he or she is out of luck! It is up to you to decide how to handle the case where the user backspaces away the entire number they are in the middle of typing, but having the display go completely blank is probably not very user-friendly. You will find the Strings and Characters section of the Swift Reference Guide to be very helpful here.
+2. Change the computed instance variable displayValue to be an Optional Double rather than a Double. Its value should be nil if the contents of display.text cannot be interpreted as a Double. Setting its value to nil should clear the display out. You’ll have to modify the code that uses displayValue accordingly.
+3. Figure out from the documentation how to use the NSNumberFormatter class to format your display so that it only shows 6 digits after the decimal point (instead of showing all digits that can be represented in a Double). This will eliminate the need for Autoshrink in your display. While you’re at it, make it so that numbers that are integers don’t have an unnecessary “.0” attached to them (e.g. show “4” rather than “4.0” as the result of the square root of sixteen). You can do all this for your description in the CalculatorBrain as well.
+4. Make one of your operation buttons be “generate a random number between 0 and 1”. This operation button is not a constant (since it changes each time you invoke it). Nor is it a unary operation (since it does not operate on anything).
