@@ -1,24 +1,12 @@
 #CS193P - Developing iOS 9 Apps with Swift 2.2
-This repository contains code that follows demos done during classes and that solve the assigments proposed on CS193P course Spring 2016 lectures. 
+
+## Calculator 
+This is Programming Assignment #1
+Donwload the document on [iTunesU]( http://apple.co/1OapOAg)
 
 
-## Stanford University Class CS193P - Spring 2016
-This course was launched by Stanford and iTunesU on March 28, 2016 and is hosted by the outstanding Prof. Paul Hegarty.
-
-The course video sessions and materials can be watched and downloaded from [CS193P Online Course in iTunesU](https://itunes.apple.com/us/course/developing-ios-9-apps-swift/id1104579961). [iTunesU CS193P RSS Feed](https://itunes.apple.com/us/course/developing-ios-9-apps-swift/id1104579961)
-
-Some samples and resources are downloaded from [CS193P official website](http://web.stanford.edu/class/cs193p/cgi-bin/drupal/). 
-
-
-##Community 
-Since online users following the course via Internet and iTunesU cannot access the community created on Piazza.com, a community has been set up in [CS193P Public Google Group](http://bit.ly/23idR2B) and [Twitter](http://bit.ly/1Urm1VM). Join the community to collaborate and share help.
-
-You can also get help in this [blog (cs193p.m2m.at)](http://cs193p.m2m.at/cs193p-project-1-assignment-1-task-1-winter-2015) that attempts to provide possible solutions for the assignments (of previous years) in order to help non-Stanford students when they get stuck. If you are a Stanford student, please do not uses these solutions to cheat.
-
-
-## Projects
-### Project Assigment 1: Calculator
-<img src="https://github.com/oliverbarreto/CS193p2016_Calculator1/blob/master/Calculator1.png" width="30%">
+## Programming Assigment 1: Calculator
+<img src="https://github.com/oliverbarreto/CS193p2016_Calculator1/blob/master/Calculator1.png" width= "30%">
 <img src="https://github.com/oliverbarreto/CS193p2016_Calculator1/blob/master/Calculator2.png" width="50%">
 
 ### License
@@ -28,3 +16,29 @@ My code is also licensed under the [Creative Commons Attribution-Noncommercial-S
 <!---
 ![Calculator](https://github.com/oliverbarreto/CS193p2016_Calculator1/blob/master/Calculator1.png "Logo Title Text 1")
 -->
+
+
+### Required Tasks
+1. Get the Calculator working as demonstrated in lectures 1 and 2.
+2. Your calculator already works with floating point numbers (e.g. if you touch 3 ÷ 4 =, it will properly show 0.75), however, there is no way for the user to enter a floating point number directly. Fix this by allowing legal floating point numbers to be entered (e.g. “192.168.0.1” is not a legal floating point number!). You will have to add a new “.” button to your calculator. Don’t worry too much about precision or significant digits in this assignment (including in the examples below).
+3. Add some more operations buttons to your calculator such that it has at least a dozen operations total (it can have even more if you like). You can choose whatever operations appeal to you. The buttons must arrange themselves nicely in portrait and landscape modes on all iPhones.
+4. Use color to make your UI look nice. At the very least, your operations buttons must be a different color than your keypad buttons, but otherwise you can use color in whatever way you think looks nice.
+5. Add a String property to your CalculatorBrain called description which returns a description of the sequence of operands and operations that led to the value returned by result. “=“ should never appear in this description, nor should “...”.
+6. Add a Bool property to your CalculatorBrain called isPartialResult which returns whether there is a binary operation pending (if so, return true, if not, false).
+7. Use the two properties above to implement a UILabel in your UI which shows the sequence of operands and operations that led to what is showing in the display. If isPartialResult, put . . . on the end of the UILabel, else put =. If the userIsInTheMiddleOfTypingANumber, you can leave the UILabel showing whatever was there before the user started typing the number. Examples ...
+a. touching 7 + would show “7 + ...” (with 7 still in the display)
+b. 7 + 9 would show “7 + ...” (9 in the display)
+c. 7 + 9 = would show “7 + 9 =” (16 in the display)
+d. 7 + 9 = √ would show “√(7 + 9) =” (4 in the display)
+e. 7 + 9 √ would show “7 + √(9) ...” (3 in the display)
+f. 7 + 9 √ = would show “7 + √(9) =“ (10 in the display)
+g. 7 + 9 = + 6 + 3 = would show “7 + 9 + 6 + 3 =” (25 in the display)
+h. 7 + 9 = √ 6 + 3 = would show “6 + 3 =” (9 in the display)
+i. 5 + 6 = 7 3 would show “5 + 6 =” (73 in the display)
+j. 7 + = would show “7 + 7 =” (14 in the display)
+k. 4 × π = would show “4 × π =“ (12.5663706143592 in the display)
+l. 4 + 5 × 3 = would show “4 + 5 × 3 =” (27 in the display)
+m. 4 + 5 × 3 = could also show “(4 + 5) × 3 =” if you prefer (27 in the display)
+PAGE 2 OF 7 ASSIGNMENT I: CALCULATOR
+CS193P IOS APPLICATION DEVELOPMENT SPRING 2016
+8. Add a C button that clears everything (your display, the new UILabel you added above, etc.). The Calculator should be in the same state as it is at application startup after you touch this new button.
