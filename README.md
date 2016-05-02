@@ -13,7 +13,7 @@ Some samples and resources are downloaded from [CS193P official website](http://
 ###Community 
 Since online users following the course via Internet and iTunesU cannot access the community created on Piazza.com, a community has been set up in [CS193P Public Google Group](http://bit.ly/23idR2B) and [Twitter](http://bit.ly/1Urm1VM). Join the community to collaborate and share help.
 
-You can also get help in this [blog](http://cs193p.m2m.at/cs193p-project-1-assignment-1-task-1-winter-2015) that attempts to provide possible solutions for the assignments (of previous years) in order to help non-Stanford students when they get stuck. If you are a Stanford student, please do not uses these solutions to cheat.
+You can also get help in this [blog (cs193p.m2m.at)](http://cs193p.m2m.at/cs193p-project-1-assignment-1-task-1-winter-2015) that attempts to provide possible solutions for the assignments (of previous years) in order to help non-Stanford students when they get stuck. If you are a Stanford student, please do not uses these solutions to cheat.
 
 
 ### Projects
