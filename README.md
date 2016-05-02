@@ -13,7 +13,6 @@ Some samples and resources are downloaded from [CS193P official website](http://
 ###Community 
 Since online users following the course via Internet and iTunesU cannot access the community created on Piazza.com, a community has been set up in [CS193P Public Google Group](http://bit.ly/23idR2B) and [Twitter](http://bit.ly/1Urm1VM). Join the community to collaborate and share help.
 
-![Calculator](https://github.com/oliverbarreto/CS193p2016_Calculator1/blob/master/Calculator1.png "Logo Title Text 1")
 
 
 ### Projects
@@ -21,3 +20,7 @@ Since online users following the course via Internet and iTunesU cannot access t
 []
 <img src="https://github.com/oliverbarreto/CS193p2016_Calculator1/blob/master/Calculator1.png" width="30%">
 <img src="https://github.com/oliverbarreto/CS193p2016_Calculator1/blob/master/Calculator2.png" width="30%">
+
+<!---
+![Calculator](https://github.com/oliverbarreto/CS193p2016_Calculator1/blob/master/Calculator1.png "Logo Title Text 1")
+-->
