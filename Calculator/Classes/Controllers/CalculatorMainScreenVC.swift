@@ -10,19 +10,61 @@ import UIKit
 
 class CalculatorMainScreenVC: UIViewController {
 
-  @IBOutlet weak var display: UILabel!
+  // MARK: Properties & Outlets
+  @IBOutlet private weak var display: UILabel!
   
-  @IBAction func pressDigit(sender: UIButton) {
+  // Model
+  private var brain = CalculatorBrain()
+  
+  // Tracks display input
+  private var userIsInTheMiddleOfTyping = false
+  
+  
+  // Keeps the UI updated everytime we set the property
+  private var displayValue: Double {
+    get {
+      return Double(display.text!)!
+      //return NSNumberFormatter().numberFromString(display.text!)!.doubleValue
+    }
+    set {
+      display.text = NSString(format: "%.5f", newValue) as String
+    }
+  }
+  
+  // MARK: Methods
+  @IBAction private func pressDigit(sender: UIButton) {
+    
     if let digit = sender.titleLabel?.text {
-        print("\(digit)")
+      print("\(digit)")
+      if userIsInTheMiddleOfTyping {
+        if (digit == ".") && display.text!.rangeOfString(".") != nil {return }
+        display.text = display.text! + digit
+      } else {
+        if digit == "." {
+          display.text = "0."
+        } else {
+          display.text = digit
+        }
+      }
+      userIsInTheMiddleOfTyping = true        
     }
     
   }
   
-  @IBAction func performOperation(sender: UIButton) {
-    if let operation = sender.titleLabel?.text {
-      print("\(operation)")
+  @IBAction private func performOperation(sender: UIButton) {
+    
+    // Operand
+    if userIsInTheMiddleOfTyping {
+      brain.setOperand(displayValue)
+      userIsInTheMiddleOfTyping = false
     }
+    
+    // Operation
+    if let operation = sender.currentTitle {
+      print("\(operation)")
+      brain.performOperation(operation)
+    }
+    displayValue = brain.result
   }
   
 }
