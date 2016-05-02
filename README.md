@@ -18,7 +18,7 @@ You can also get help in this [blog (cs193p.m2m.at)](http://cs193p.m2m.at/cs193p
 
 ## Projects
 ### Project Assigment 1: Calculator
-<img src="https://github.com/oliverbarreto/CS193p2016_Calculator1/blob/master/Calculator1.png" heigth="30%">
+<img src="https://github.com/oliverbarreto/CS193p2016_Calculator1/blob/master/Calculator1.png" height="30%">
 <img src="https://github.com/oliverbarreto/CS193p2016_Calculator1/blob/master/Calculator2.png" width="30%">
 
 ### License
