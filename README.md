@@ -29,16 +29,28 @@ My code is also licensed under the [Creative Commons Attribution-Noncommercial-S
 
 *touching 7 + would show “7 + ...” (with 7 still in the display)
 *7 + 9 would show “7 + ...” (9 in the display)
+
 *7 + 9 = would show “7 + 9 =” (16 in the display)
-d* + 9 = √ would show “√(7 + 9) =” (4 in the display)
+
+* + 9 = √ would show “√(7 + 9) =” (4 in the display)
+
 *7 + 9 √ would show “7 + √(9) ...” (3 in the display)
+
 *7 + 9 √ = would show “7 + √(9) =“ (10 in the display)
+
 *7 + 9 = + 6 + 3 = would show “7 + 9 + 6 + 3 =” (25 in the display)
+
 *7 + 9 = √ 6 + 3 = would show “6 + 3 =” (9 in the display)
+
 *5 + 6 = 7 3 would show “5 + 6 =” (73 in the display)
+
 *7 + = would show “7 + 7 =” (14 in the display)
+
 *4 × π = would show “4 × π =“ (12.5663706143592 in the display)
+
 *4 + 5 × 3 = would show “4 + 5 × 3 =” (27 in the display)
+
 *4 + 5 × 3 = could also show “(4 + 5) × 3 =” if you prefer (27 in the display)
+
 
 8. Add a C button that clears everything (your display, the new UILabel you added above, etc.). The Calculator should be in the same state as it is at application startup after you touch this new button.
