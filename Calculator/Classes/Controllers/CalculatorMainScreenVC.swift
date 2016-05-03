@@ -13,6 +13,10 @@ class CalculatorMainScreenVC: UIViewController {
   // MARK: Properties & Outlets
   @IBOutlet private weak var display: UILabel!
   
+
+  @IBOutlet weak var stackviewLeftPanel: UIStackView!
+  
+  
   // Model
   private var brain = CalculatorBrain()
   
@@ -68,3 +72,37 @@ class CalculatorMainScreenVC: UIViewController {
   }
   
 }
+
+
+extension CalculatorMainScreenVC {
+ 
+  // MARK: VC LifeCycle
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    configureView(traitCollection.verticalSizeClass)
+  }
+  
+  // Manage device orientation
+  override func willTransitionToTraitCollection(newCollection: UITraitCollection,
+                        withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+    
+    super.willTransitionToTraitCollection(newCollection, withTransitionCoordinator: coordinator)
+    
+    configureView(newCollection.verticalSizeClass)
+  }
+ 
+  
+  
+  // MARK: Utility Method that helps hide the left panel stackview in the calculator when in portrait 
+  
+  private func configureView(verticalSizeClass: UIUserInterfaceSizeClass) {
+    guard stackviewLeftPanel != nil else {
+      return
+    }
+    stackviewLeftPanel.hidden = (verticalSizeClass == .Regular)
+  }
+  
+}
+

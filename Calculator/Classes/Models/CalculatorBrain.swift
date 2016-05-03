@@ -28,6 +28,7 @@ class CalculatorBrain {
     "%" : Operation.UnaryOperation( {$0/100} ),
     "±" : Operation.UnaryOperation( {-$0} ),
     "√" : Operation.UnaryOperation(sqrt),
+    "2√x" : Operation.UnaryOperation(sqrt),
     "cos" : Operation.UnaryOperation(cos),
     "sen" : Operation.UnaryOperation(sin),
     "x^2" : Operation.UnaryOperation( {$0*$0} ),
