@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Darwin
 
 class CalculatorBrain {
   
@@ -24,14 +23,17 @@ class CalculatorBrain {
     "e" : Operation.Constant(M_E),
     "C" : Operation.Constant(0),
     
+    
     // Unary Ops
-    "%" : Operation.UnaryOperation( {$0/100}),
-    "±" : Operation.UnaryOperation( {-$0}),
+    "%" : Operation.UnaryOperation( {$0/100} ),
+    "±" : Operation.UnaryOperation( {-$0} ),
     "√" : Operation.UnaryOperation(sqrt),
     "cos" : Operation.UnaryOperation(cos),
     "sen" : Operation.UnaryOperation(sin),
-    "x^2" : Operation.UnaryOperation( {$0*$0}),
-
+    "x^2" : Operation.UnaryOperation( {$0*$0} ),
+    "rnd" : Operation.UnaryOperation( {_ in drand48()} ),
+    "rndX" : Operation.UnaryOperation( {Double(arc4random_uniform(UInt32($0+1)))} ),
+    
     // Binary Ops
     "÷" : Operation.BinaryOperation( {$0 / $1}),
     "×" : Operation.BinaryOperation( {$0 * $1} ),
