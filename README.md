@@ -6,8 +6,8 @@ Donwload the document on [iTunesU]( http://apple.co/1OapOAg)
 
 
 ## Programming Assigment 1: Calculator
-<img src="https://github.com/oliverbarreto/CS193p2016_Calculator1/blob/master/Calculator1.png" width= "30%">
-<img src="https://github.com/oliverbarreto/CS193p2016_Calculator1/blob/master/Calculator2.png" width="50%">
+<img src="https://github.com/oliverbarreto/CS193p2016_Calculator1/blob/RequiredTasks/Calculator1.png" width= "30%">
+<img src="https://github.com/oliverbarreto/CS193p2016_Calculator1/blob/RequiredTasks/Calculator2.png" width="50%">
 
 ### License
 Stanford University code on iTunes and Its blog follows the following license. This work by Stanford University is licensed under a [Creative Commons Attribution-Noncommercial-Share Alike 3.0 United States License](http://creativecommons.org/licenses/by-nc-sa/3.0/us/). Based on a work at [cs193p.stanford.edu](http://cs193p.stanford.edu/)
