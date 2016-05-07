@@ -33,18 +33,29 @@ class CalculatorMainScreenVC: UIViewController {
       //return NSNumberFormatter().numberFromString(display.text!)!.doubleValue
     }
     set {
-      display.text = NSString(format: "%.5f", newValue) as String
+      //display.text = NSString(format: "%.5f", newValue) as String
+      display.text = String(newValue)
     }
   }
   
-  // MARK: Methods
+  // MARK: Public Methods
   @IBAction private func pressDigit(sender: UIButton) {
     
     if let digit = sender.titleLabel?.text {
       print("\(digit)")
+      
       if userIsInTheMiddleOfTyping {
-        if (digit == ".") && display.text!.rangeOfString(".") != nil {return }
-        display.text = display.text! + digit
+        if (digit == ".") && display.text!.rangeOfString(".") != nil { return }
+        if (digit == "0") && (display.text! == "0" || display.text! == "-0") { return }
+        if (digit != ".") && (display.text! == "0" || display.text! == "-0") {
+          if (display.text == "0") {
+            display.text = digit
+          } else {
+            display.text = "-" + digit
+          }
+        } else {
+          display.text = display.text! + digit
+        }
       } else {
         if digit == "." {
           display.text = "0."
@@ -61,19 +72,37 @@ class CalculatorMainScreenVC: UIViewController {
     
     // Operand
     if userIsInTheMiddleOfTyping {
-      brain.setOperand(displayValue)
-      userIsInTheMiddleOfTyping = false
+      enter()
     }
     
     // Operation
     if let operation = sender.currentTitle {
       print("\(operation)")
-      brain.performOperation(operation)
+    
+      if operation == "AC" {
+        clear()
+        return
+      } else {
+        brain.performOperation(operation)
+      }
     }
     displayValue = brain.result
   }
+
   
+  // MARK: Private Methods
+  private func enter() {
+    brain.setOperand(displayValue)
+    userIsInTheMiddleOfTyping = false
+  }
+  
+  private func clear() {
+      displayValue = 0
+      brain = CalculatorBrain()
+  }
 }
+
+
 
 
 extension CalculatorMainScreenVC {
