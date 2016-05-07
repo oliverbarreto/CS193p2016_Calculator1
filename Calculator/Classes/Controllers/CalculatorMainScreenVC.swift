@@ -12,7 +12,7 @@ class CalculatorMainScreenVC: UIViewController {
 
   // MARK: Properties & Outlets
   
-  // Calculator Main Display
+  // Calculator Main D  isplay
   @IBOutlet private weak var display: UILabel!
 
   // To manage hide/show when device Orientation changes (hide left stackview panel when protrait) 
@@ -24,7 +24,7 @@ class CalculatorMainScreenVC: UIViewController {
   
   // Tracks display input
   private var userIsInTheMiddleOfTyping = false
-  
+  private var isPartialResult = false
   
   // Keeps the UI updated everytime we set the property
   private var displayValue: Double {
