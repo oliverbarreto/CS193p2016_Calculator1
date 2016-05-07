@@ -7,6 +7,8 @@
 //
 
 # Done
+
+### Required Tasks
 1. Get the Calculator working as demonstrated in lectures 1 and 2.
 3. Add some more operations buttons to your calculator such that it has at least a dozen operations total (it can have even more if you like). You can choose whatever operations appeal to you. The buttons must arrange themselves nicely in portrait and landscape modes on all iPhones.
 4. Use color to make your UI look nice. At the very least, your operations buttons must be a different color than your keypad buttons, but otherwise you can use color in whatever way you think looks nice.
