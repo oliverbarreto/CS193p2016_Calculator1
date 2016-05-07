@@ -12,7 +12,7 @@ class CalculatorMainScreenVC: UIViewController {
 
   // MARK: Properties & Outlets
   
-  // Calculator Main Display
+  // Calculator Main D  isplay
   @IBOutlet private weak var display: UILabel!
 
   // To manage hide/show when device Orientation changes (hide left stackview panel when protrait) 
@@ -24,7 +24,7 @@ class CalculatorMainScreenVC: UIViewController {
   
   // Tracks display input
   private var userIsInTheMiddleOfTyping = false
-  
+  private var isPartialResult = false
   
   // Keeps the UI updated everytime we set the property
   private var displayValue: Double {
@@ -33,18 +33,29 @@ class CalculatorMainScreenVC: UIViewController {
       //return NSNumberFormatter().numberFromString(display.text!)!.doubleValue
     }
     set {
-      display.text = NSString(format: "%.5f", newValue) as String
+      //display.text = NSString(format: "%.5f", newValue) as String
+      display.text = String(newValue)
     }
   }
   
-  // MARK: Methods
+  // MARK: Public Methods
   @IBAction private func pressDigit(sender: UIButton) {
     
     if let digit = sender.titleLabel?.text {
       print("\(digit)")
+      
       if userIsInTheMiddleOfTyping {
-        if (digit == ".") && display.text!.rangeOfString(".") != nil {return }
-        display.text = display.text! + digit
+        if (digit == ".") && display.text!.rangeOfString(".") != nil { return }
+        if (digit == "0") && (display.text! == "0" || display.text! == "-0") { return }
+        if (digit != ".") && (display.text! == "0" || display.text! == "-0") {
+          if (display.text == "0") {
+            display.text = digit
+          } else {
+            display.text = "-" + digit
+          }
+        } else {
+          display.text = display.text! + digit
+        }
       } else {
         if digit == "." {
           display.text = "0."
@@ -61,19 +72,37 @@ class CalculatorMainScreenVC: UIViewController {
     
     // Operand
     if userIsInTheMiddleOfTyping {
-      brain.setOperand(displayValue)
-      userIsInTheMiddleOfTyping = false
+      enter()
     }
     
     // Operation
     if let operation = sender.currentTitle {
       print("\(operation)")
-      brain.performOperation(operation)
+    
+      if operation == "AC" {
+        clear()
+        return
+      } else {
+        brain.performOperation(operation)
+      }
     }
     displayValue = brain.result
   }
+
   
+  // MARK: Private Methods
+  private func enter() {
+    brain.setOperand(displayValue)
+    userIsInTheMiddleOfTyping = false
+  }
+  
+  private func clear() {
+      displayValue = 0
+      brain = CalculatorBrain()
+  }
 }
+
+
 
 
 extension CalculatorMainScreenVC {
