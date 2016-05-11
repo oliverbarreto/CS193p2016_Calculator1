@@ -27,7 +27,6 @@ class CalculatorBrain {
   
   // MARK: Properties
   private var accumulator = 0.0
-  private var isPartialResult = false
 
   
   private var operations: Dictionary<String,Operation> = [
@@ -141,6 +140,13 @@ class CalculatorBrain {
         case .Equals:
           executePendingOperation()
       }
+    }
+  }
+
+  // Returns whether there is a binary operation pending (if so, return true, if not, false)
+  var isPartialResult: Bool {
+    get {
+      return pending != nil
     }
   }
   
