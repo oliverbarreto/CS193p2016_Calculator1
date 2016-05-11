@@ -27,6 +27,8 @@ class CalculatorBrain {
   
   // MARK: Properties
   private var accumulator = 0.0
+  private var isPartialResult = false
+
   
   private var operations: Dictionary<String,Operation> = [
     // Basic Calculator View 

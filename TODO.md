@@ -14,11 +14,14 @@
 3. Add some more operations buttons to your calculator such that it has at least a dozen operations total (it can have even more if you like). You can choose whatever operations appeal to you. The buttons must arrange themselves nicely in portrait and landscape modes on all iPhones.
 4. Use color to make your UI look nice. At the very least, your operations buttons must be a different color than your keypad buttons, but otherwise you can use color in whatever way you think looks nice.
 
+6. Add a Bool property to your CalculatorBrain called isPartialResult which returns whether there is a binary operation pending (if so, return true, if not, false).
+
+
+
 # TODO
 
 ### Required Tasks
 5. Add a String property to your CalculatorBrain called description which returns a description of the sequence of operands and operations that led to the value returned by result. “=“ should never appear in this description, nor should “...”.
-6. Add a Bool property to your CalculatorBrain called isPartialResult which returns whether there is a binary operation pending (if so, return true, if not, false).
 7. Use the two properties above to implement a UILabel in your UI which shows the sequence of operands and operations that led to what is showing in the display. If isPartialResult, put . . . on the end of the UILabel, else put =. If the userIsInTheMiddleOfTypingANumber, you can leave the UILabel showing whatever was there before the user started typing the number. Examples:
 	* touching 7 + would show “7 + ...” (with 7 still in the display)
 	* 7 + 9 would show “7 + ...” (9 in the display)
