@@ -15,6 +15,9 @@ class CalculatorMainScreenVC: UIViewController {
   // Calculator Main Display
   @IBOutlet private weak var display: UILabel!
 
+  @IBOutlet weak var opsDescriptionDisplay: UILabel!
+  
+  
   // To manage hide/show when device Orientation changes (hide left stackview panel when protrait) 
   @IBOutlet weak var stackviewLeftPanel: UIStackView!
   
