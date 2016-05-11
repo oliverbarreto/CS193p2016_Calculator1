@@ -12,7 +12,7 @@ class CalculatorMainScreenVC: UIViewController {
 
   // MARK: Properties & Outlets
   
-  // Calculator Main D  isplay
+  // Calculator Main Display
   @IBOutlet private weak var display: UILabel!
 
   // To manage hide/show when device Orientation changes (hide left stackview panel when protrait) 
@@ -34,7 +34,12 @@ class CalculatorMainScreenVC: UIViewController {
     }
     set {
       //display.text = NSString(format: "%.5f", newValue) as String
-      display.text = String(newValue)
+      if String(newValue).rangeOfString(".0") != nil {
+        display.text = String(Int(newValue))
+      } else {
+        display.text = String(newValue)
+      }
+
     }
   }
   
@@ -42,7 +47,6 @@ class CalculatorMainScreenVC: UIViewController {
   @IBAction private func pressDigit(sender: UIButton) {
     
     if let digit = sender.titleLabel?.text {
-      print("\(digit)")
       
       if userIsInTheMiddleOfTyping {
         if (digit == ".") && display.text!.rangeOfString(".") != nil { return }
@@ -103,8 +107,6 @@ class CalculatorMainScreenVC: UIViewController {
 }
 
 
-
-
 extension CalculatorMainScreenVC {
  
   // MARK: VC LifeCycle
@@ -124,7 +126,6 @@ extension CalculatorMainScreenVC {
     configureView(newCollection.verticalSizeClass)
   }
  
-  
   
   // MARK: Utility Method that helps hide the left panel stackview in the calculator when in portrait 
   
