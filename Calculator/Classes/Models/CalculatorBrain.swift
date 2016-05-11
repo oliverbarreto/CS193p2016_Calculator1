@@ -122,7 +122,7 @@ class CalculatorBrain {
     accumulator = operand
   }
   
-  
+  // Performs Operations based on symbols
   func performOperation(operationSymbol: String) {
 
     if let operation = operations[operationSymbol] {
@@ -144,6 +144,14 @@ class CalculatorBrain {
     }
   }
   
+  // Returns the a string with all operations performed until new operands are introduced 
+  var description: String {
+    get {
+      return ""
+    }
+  }
+
+  // Returns the result of any operations
   var result: Double {
     get {
       return accumulator
