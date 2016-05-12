@@ -42,7 +42,8 @@ class CalculatorMainScreenVC: UIViewController {
       } else {
         display.text = String(newValue)
       }
-
+      
+      opsDescriptionDisplay.text = brain.description + (brain.isPartialResult ? " ..." : " =")
     }
   }
   
@@ -105,6 +106,7 @@ class CalculatorMainScreenVC: UIViewController {
   
   private func clear() {
       displayValue = 0
+      opsDescriptionDisplay.text = " "
       brain = CalculatorBrain()
   }
 }
