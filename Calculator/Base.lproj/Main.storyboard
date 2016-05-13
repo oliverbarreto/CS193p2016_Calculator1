@@ -695,7 +695,7 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="83" height="52"/>
                                                                 </variation>
                                                                 <connections>
-                                                                    <action selector="performOperation:" destination="GwC-fK-1AQ" eventType="touchUpInside" id="dcZ-35-p15"/>
+                                                                    <action selector="backspaceButtonPressed:" destination="GwC-fK-1AQ" eventType="touchUpInside" id="TGs-BR-bNb"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QWk-qe-HSX">

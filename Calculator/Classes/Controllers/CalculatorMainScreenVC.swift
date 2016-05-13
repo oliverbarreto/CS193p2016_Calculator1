@@ -98,6 +98,27 @@ class CalculatorMainScreenVC: UIViewController {
   }
 
   
+  @IBAction func backspaceButtonPressed(sender: UIButton) {
+    
+    if userIsInTheMiddleOfTyping {
+      if display.text != nil {
+        display.text = String(display.text!.characters.dropLast(1))
+        
+        // If we remove the last decimal... remove the "."
+        if display.text!.isEmpty {
+          display.text = "0"
+          userIsInTheMiddleOfTyping = false
+        }
+        if display.text!.characters.last == "." {
+          display.text = String(display.text!.characters.dropLast(1))
+        }
+        
+      } else {
+        display.text = "0"
+      }
+    }
+  }
+  
   // MARK: Private Methods
   private func enter() {
     brain.setOperand(displayValue)

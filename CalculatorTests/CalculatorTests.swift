@@ -9,6 +9,7 @@
 import XCTest
 import Calculator
 
+
 class CalculatorTests: XCTestCase {
     
     override func setUp() {
@@ -21,10 +22,7 @@ class CalculatorTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
+    
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
@@ -157,5 +155,6 @@ class CalculatorTests: XCTestCase {
     
     // 4 + 5 × 3 = could also show “(4 + 5) × 3 =” if you prefer (27 in the display)
   }
+  
     
 }
