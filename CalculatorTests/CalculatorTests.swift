@@ -43,12 +43,13 @@ class CalculatorTests: XCTestCase {
     
     XCTAssertEqual(brain.description, "7 + ")
     XCTAssertEqual(brain.result, 7.0)
-    
+    XCTAssertTrue(brain.isPartialResult)
+  
     // 7 + 9 would show “7 + ...” (9 in the display)
-    //brain.setOperand(9) Entered but not pushed
-    
+    //brain.setOperand(9) Entered but not pushed    
     XCTAssertEqual(brain.description, "7 + ")
     XCTAssertEqual(brain.result, 7.0)
+    XCTAssertTrue(brain.isPartialResult)
 
     // 7 + 9 = would show “7 + 9 =” (16 in the display)
     brain.setOperand(9)
@@ -56,12 +57,14 @@ class CalculatorTests: XCTestCase {
     
     XCTAssertEqual(brain.description, "7 + 9")
     XCTAssertEqual(brain.result, 16.0)
+    XCTAssertFalse(brain.isPartialResult)
         
     // + 9 = √ would show “√(7 + 9) =” (4 in the display)
     brain.performOperation("√")
     
     XCTAssertEqual(brain.description, "²√(7 + 9)")
     XCTAssertEqual(brain.result, 4.0)
+    XCTAssertFalse(brain.isPartialResult)
     
     // 7 + 9 √ would show “7 + √(9) ...” (3 in the display)
     brain.setOperand(7)
@@ -71,13 +74,15 @@ class CalculatorTests: XCTestCase {
     
     XCTAssertEqual(brain.description, "7 + ²√(9)")
     XCTAssertEqual(brain.result, 3.0)
+    XCTAssertTrue(brain.isPartialResult)
     
     // 7 + 9 √ = would show “7 + √(9) =“ (10 in the display)
     brain.performOperation("=")
     
     XCTAssertEqual(brain.description, "7 + ²√(9)")
     XCTAssertEqual(brain.result, 10.0)
-
+    XCTAssertFalse(brain.isPartialResult)
+    
     // 7 + 9 = + 6 + 3 = would show “7 + 9 + 6 + 3 =” (25 in the display)
     brain.setOperand(7)
     brain.performOperation("+")
@@ -91,7 +96,8 @@ class CalculatorTests: XCTestCase {
     
     XCTAssertEqual(brain.description, "7 + 9 + 6 + 3")
     XCTAssertEqual(brain.result, 25.0)
-  
+    XCTAssertFalse(brain.isPartialResult)
+    
     // 7 + 9 = √ 6 + 3 = would show “6 + 3 =” (9 in the display)
     brain.setOperand(7)
     brain.performOperation("+")
@@ -105,7 +111,8 @@ class CalculatorTests: XCTestCase {
     
     XCTAssertEqual(brain.description, "6 + 3")
     XCTAssertEqual(brain.result, 9.0)
-        
+    XCTAssertFalse(brain.isPartialResult)
+    
     // 5 + 6 = 7 3 would show “5 + 6 =” (73 in the display)
     brain.setOperand(5)
     brain.performOperation("+")
@@ -116,6 +123,7 @@ class CalculatorTests: XCTestCase {
     
     XCTAssertEqual(brain.description, "5 + 6")
     XCTAssertEqual(brain.result, 11.0)
+    XCTAssertFalse(brain.isPartialResult)
     
     // 7 + = would show “7 + 7 =” (14 in the display)
     brain.setOperand(7)
@@ -133,6 +141,7 @@ class CalculatorTests: XCTestCase {
     
     XCTAssertEqual(brain.description, "4 × π")
     XCTAssertEqual(Int(brain.result), Int(12.5663706143592))
+    XCTAssertFalse(brain.isPartialResult)
     
     // 4 + 5 × 3 = would show “4 + 5 × 3 =” (27 in the display)
     brain.setOperand(4)
@@ -144,7 +153,8 @@ class CalculatorTests: XCTestCase {
     
     XCTAssertEqual(brain.description, "4 + 5 × 3")
     XCTAssertEqual(brain.result, 27.0)
-
+    XCTAssertFalse(brain.isPartialResult)
+    
     // 4 + 5 × 3 = could also show “(4 + 5) × 3 =” if you prefer (27 in the display)
   }
     
