@@ -1,13 +1,13 @@
 #CS193P - Developing iOS 9 Apps with Swift 2.2
 
-## Calculator 
+## Calculator
 This is Programming Assignment #1
 Donwload the document on [iTunesU]( http://apple.co/1OapOAg)
 
 
 ## Programming Assigment 1: Calculator
-<img src="https://github.com/oliverbarreto/CS193p2016_Calculator1/blob/RequiredTasks/Calculator1.png" width= "30%">
-<img src="https://github.com/oliverbarreto/CS193p2016_Calculator1/blob/RequiredTasks/Calculator2.png" width="50%">
+<img src="https://github.com/oliverbarreto/CS193p2016_Calculator1/blob/master/Calculator1.png" width= "30%">
+<img src="https://github.com/oliverbarreto/CS193p2016_Calculator1/blob/master/Calculator2.png" width="50%">
 
 ## ToDo List
 The [current TODO status](https://github.com/oliverbarreto/CS193p2016_Calculator1/blob/dev/TODO.md)
