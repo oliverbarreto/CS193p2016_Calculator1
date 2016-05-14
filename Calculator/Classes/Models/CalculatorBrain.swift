@@ -22,11 +22,28 @@ func factorial(num: Double) -> Double {
 }
 
 
+/* 
+ func factorial(op1: Double) -> Double {
+ if (op1 <= 1) {
+ return 1
+ }
+ return op1 * factorial(op1 - 1.0)
+ }
+*/
+
 // MARK: CalculatorBrain Class
 class CalculatorBrain {
   
-  // MARK: Properties
+  // MARK: Init
+	init(decimalDigits: Int) {
+		self.numberOfMaximunDecimalDigits = decimalDigits
+	}
+	
+	// MARK: Properties
   
+	// Number of decimal digits calculations for model
+	var numberOfMaximunDecimalDigits: Int
+	
   // Used for logic of Calculator Brain - Operations
   private var accumulator = 0.0
   
@@ -37,7 +54,7 @@ class CalculatorBrain {
     // Basic Calculator View 
     "AC" : Operation.Constant(0),
     "±" : Operation.UnaryOperation( {-$0}, { (Double($0) >= 0) ? ("-" + $0) : $0} ),
-    "%" : Operation.UnaryOperation( {$0/100}, {"%" + $0 } ),
+    "%" : Operation.UnaryOperation( {$0/100}, {"%(" + $0 + ")"} ),
 
     "÷" : Operation.BinaryOperation( {$0 / $1}, {$0 + " ÷ " + $1} ),
     "×" : Operation.BinaryOperation( {$0 * $1}, {$0 + " × " + $1} ),
@@ -57,22 +74,22 @@ class CalculatorBrain {
     // -m remove display value from  memory
     // mr recover memory value to display
 
-    "2ⁿ" : Operation.UnaryOperation(  {pow(2,$0)}, {"2^" + $0 } ),
-    "x²" : Operation.UnaryOperation(  {pow($0,2)}, {$0 + "²" } ),
-    "x³" : Operation.UnaryOperation(  {pow($0,3)}, {$0 + "³"} ),
+    "2ⁿ" : Operation.UnaryOperation(  {pow(2,$0)}, {"2^(" + $0 + ")"} ),
+    "x²" : Operation.UnaryOperation(  {pow($0,2)}, {"(" + $0 + ")²" } ),
+    "x³" : Operation.UnaryOperation(  {pow($0,3)}, {"(" + $0 + ")³"} ),
     "xʸ" : Operation.BinaryOperation( {pow($0,$1)}, {$0 + "^" + $1} ),
-    "eˣ" : Operation.UnaryOperation(  {pow(M_E,$0)}, {"e^" + $0 } ),
-    "10ˣ" : Operation.UnaryOperation( {pow(10,$0)}, {"10^" + $0 } ),
+    "eˣ" : Operation.UnaryOperation(  {pow(M_E,$0)}, {"e^(" + $0 + ")"} ),
+    "10ˣ" : Operation.UnaryOperation( {pow(10,$0)}, {"10^(" + $0 + ")"} ),
     
-    "1/x" : Operation.UnaryOperation( {1/$0}, {"1/" + $0 } ),
+    "1/x" : Operation.UnaryOperation( {1/$0}, {"1/(" + $0 + ")"} ),
     "√" : Operation.UnaryOperation(sqrt, {"²√(" + $0 + ")"} ),
     "²√x" : Operation.UnaryOperation(sqrt, {"²√(" + $0  + ")"} ),
     "³√x" : Operation.UnaryOperation(   {pow($0,1/3)}, {"³√(" + $0 + ")"} ),
-    "ʸ√x" : Operation.BinaryOperation(  {pow($0,1/$1)}, {"(" + $1 + "√(" + $0 + "))"} ),
+    "ʸ√x" : Operation.BinaryOperation(  {pow($0,1/$1)}, {$1 + "√(" + $0 + "))"} ),
     "ln" : Operation.UnaryOperation(log, {"ln " + $0 } ),
     "log₁₀" : Operation.UnaryOperation(log, {"log₁₀ " + $0 } ),
     
-    "x!" : Operation.UnaryOperation( { factorial($0)}, {$0 + "! "} ),
+    "x!" : Operation.UnaryOperation( { factorial($0)}, {"(" + $0 + ")!"} ),
     "sin" : Operation.UnaryOperation(sin, {"sin(" + $0 + ")"} ),
     "cos" : Operation.UnaryOperation(cos, {"cos(" + $0 + ")"} ),
     "tan" : Operation.UnaryOperation(tan, {"tan(" + $0 + ")"} ),
@@ -139,7 +156,11 @@ class CalculatorBrain {
   // MARK: Public Methods
   func setOperand(operand:Double) {
     accumulator = operand
-    descriptionAccumulator = prettyPrinter(String(operand))
+		
+		let numberFormatter = NSNumberFormatter()
+		numberFormatter.numberStyle = .DecimalStyle
+		numberFormatter.maximumFractionDigits = numberOfMaximunDecimalDigits
+    descriptionAccumulator = prettyPrinter(String(numberFormatter.stringFromNumber(operand)!))
   }
   
   // Performs Operations based on symbols

@@ -33,7 +33,9 @@ class CalculatorTests: XCTestCase {
   
   func testDescriptionDisplayOutput() {
     
-    let brain = CalculatorBrain()
+    // All test assume working in US Locale with decimalSeparatorCharacter = "."
+    
+		let brain = CalculatorBrain(decimalDigits: 6)
     
     // touching 7 + would show “7 + ...” (with 7 still in the display)
     brain.setOperand(7)
@@ -154,6 +156,28 @@ class CalculatorTests: XCTestCase {
     XCTAssertFalse(brain.isPartialResult)
     
     // 4 + 5 × 3 = could also show “(4 + 5) × 3 =” if you prefer (27 in the display)
+
+    // Other test for the use of ( )...
+    // 7 + 6 = x² √ would show “√(7 + 6)² =” (13 in the display)
+    brain.setOperand(7)
+    brain.performOperation("+")
+    brain.setOperand(6)
+    brain.performOperation("=")
+
+    XCTAssertEqual(brain.description, "7 + 6")
+    XCTAssertEqual(brain.result, 13.0)
+    XCTAssertFalse(brain.isPartialResult)
+
+    brain.performOperation("x²")
+    XCTAssertEqual(brain.description, "(7 + 6)²")
+    XCTAssertEqual(brain.result, 169.0)
+    XCTAssertFalse(brain.isPartialResult)
+    
+    brain.performOperation("√")
+    XCTAssertEqual(brain.description, "²√((7 + 6)²)")
+    XCTAssertEqual(brain.result, 13.0)
+    XCTAssertFalse(brain.isPartialResult)
+  
   }
   
     
