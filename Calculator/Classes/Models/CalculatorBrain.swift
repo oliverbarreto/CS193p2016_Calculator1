@@ -52,20 +52,51 @@ class CalculatorBrain {
   
   private var operations: Dictionary<String,Operation> = [
     // Basic Calculator View 
-    "AC" : Operation.Constant(0),
-    "±" : Operation.UnaryOperation( {-$0}, { (Double($0) >= 0) ? ("-" + $0) : $0} ),
-    "%" : Operation.UnaryOperation( {$0/100}, {"%(" + $0 + ")"} ),
+		"=" : Operation.Equals,
 
+		// Constans
+    "AC" : Operation.Constant(0),
+    "e" : Operation.Constant(M_E),
+    "π" : Operation.Constant(M_PI),
+
+    // Unary Operations
+    "±" : Operation.UnaryOperation( {-$0}, { "-(" + $0 + ")" } ),
+    "%" : Operation.UnaryOperation( {$0/100}, {"%(" + $0 + ")"} ),
+    "2ⁿ" : Operation.UnaryOperation(  {pow(2,$0)}, {"2^(" + $0 + ")"} ),
+    "x²" : Operation.UnaryOperation(  {pow($0,2)}, {"(" + $0 + ")²" } ),
+    "x³" : Operation.UnaryOperation(  {pow($0,3)}, {"(" + $0 + ")³"} ),
+    "eˣ" : Operation.UnaryOperation(  {pow(M_E,$0)}, {"e^(" + $0 + ")"} ),
+    "10ˣ" : Operation.UnaryOperation( {pow(10,$0)}, {"10^(" + $0 + ")"} ),
+    "1/x" : Operation.UnaryOperation( {1/$0}, {"1/(" + $0 + ")"} ),
+    "√" : Operation.UnaryOperation(sqrt, {"²√(" + $0 + ")"} ),
+    "²√x" : Operation.UnaryOperation(sqrt, {"²√(" + $0  + ")"} ),
+    "³√x" : Operation.UnaryOperation(   {pow($0,1/3)}, {"³√(" + $0 + ")"} ),
+    "ln" : Operation.UnaryOperation(log, {"ln " + $0 } ),
+    "log₁₀" : Operation.UnaryOperation(log, {"log₁₀ " + $0 } ),
+    "x!" : Operation.UnaryOperation( { factorial($0)}, {"(" + $0 + ")!"} ),
+    "sin" : Operation.UnaryOperation(sin, {"sin(" + $0 + ")"} ),
+    "cos" : Operation.UnaryOperation(cos, {"cos(" + $0 + ")"} ),
+    "tan" : Operation.UnaryOperation(tan, {"tan(" + $0 + ")"} ),
+    "sinh" : Operation.UnaryOperation(sinh, {"sinh(" + $0 + ")"} ),
+		"cosh" : Operation.UnaryOperation(cosh, {"cosh(" + $0 + ")"} ),
+		"tanh" : Operation.UnaryOperation(tanh, {"tanh(" + $0 + ")"} ),
+		"rdn⒳" : Operation.UnaryOperation( {Double(arc4random_uniform(UInt32($0+1)))}, {"rdn(" + $0 + ")"}  ),
+
+		// Nullary Operations
+		"rdn" : Operation.NullaryOperation({ drand48() }, {"rdn(" + $0 + ")"} ),
+		
+		// Binary Operations
     "÷" : Operation.BinaryOperation( {$0 / $1}, {$0 + " ÷ " + $1} ),
     "×" : Operation.BinaryOperation( {$0 * $1}, {$0 + " × " + $1} ),
     "+" : Operation.BinaryOperation( {$0 + $1}, {$0 + " + " + $1} ),
     "−" : Operation.BinaryOperation( {$0 - $1}, {$0 + " − " + $1} ),
+    
+    "xʸ" : Operation.BinaryOperation( {pow($0,$1)}, {$0 + "^" + $1} ),
+    "ʸ√x" : Operation.BinaryOperation(  {pow($0,1/$1)}, {$1 + "√(" + $0 + "))"} ),
 
-    //"↲" : 
-    "=" : Operation.Equals,
     
 
-    // Advanced Calculator View
+    // Advanced Calculator
     
     // (
     // )
@@ -73,35 +104,7 @@ class CalculatorBrain {
     // +m add display value to memory
     // -m remove display value from  memory
     // mr recover memory value to display
-
-    "2ⁿ" : Operation.UnaryOperation(  {pow(2,$0)}, {"2^(" + $0 + ")"} ),
-    "x²" : Operation.UnaryOperation(  {pow($0,2)}, {"(" + $0 + ")²" } ),
-    "x³" : Operation.UnaryOperation(  {pow($0,3)}, {"(" + $0 + ")³"} ),
-    "xʸ" : Operation.BinaryOperation( {pow($0,$1)}, {$0 + "^" + $1} ),
-    "eˣ" : Operation.UnaryOperation(  {pow(M_E,$0)}, {"e^(" + $0 + ")"} ),
-    "10ˣ" : Operation.UnaryOperation( {pow(10,$0)}, {"10^(" + $0 + ")"} ),
-    
-    "1/x" : Operation.UnaryOperation( {1/$0}, {"1/(" + $0 + ")"} ),
-    "√" : Operation.UnaryOperation(sqrt, {"²√(" + $0 + ")"} ),
-    "²√x" : Operation.UnaryOperation(sqrt, {"²√(" + $0  + ")"} ),
-    "³√x" : Operation.UnaryOperation(   {pow($0,1/3)}, {"³√(" + $0 + ")"} ),
-    "ʸ√x" : Operation.BinaryOperation(  {pow($0,1/$1)}, {$1 + "√(" + $0 + "))"} ),
-    "ln" : Operation.UnaryOperation(log, {"ln " + $0 } ),
-    "log₁₀" : Operation.UnaryOperation(log, {"log₁₀ " + $0 } ),
-    
-    "x!" : Operation.UnaryOperation( { factorial($0)}, {"(" + $0 + ")!"} ),
-    "sin" : Operation.UnaryOperation(sin, {"sin(" + $0 + ")"} ),
-    "cos" : Operation.UnaryOperation(cos, {"cos(" + $0 + ")"} ),
-    "tan" : Operation.UnaryOperation(tan, {"tan(" + $0 + ")"} ),
-    "e" : Operation.Constant(M_E),
-    "rdn" : Operation.UnaryOperation( {_ in Double((arc4random_uniform(UInt32(100000000)))/100000000)}, {_ in "rdn"} ),
-
-    //Rad - Radians vs Degrees Toggle
-    "sinh" : Operation.UnaryOperation(sinh, {"sinh(" + $0 + ")"} ),
-    "cosh" : Operation.UnaryOperation(cosh, {"cosh(" + $0 + ")"} ),
-    "tanh" : Operation.UnaryOperation(tanh, {"tanh(" + $0 + ")"} ),
-    "π" : Operation.Constant(M_PI),
-    "rdn⒳" : Operation.UnaryOperation( {Double(arc4random_uniform(UInt32($0+1)))}, {"rdn(" + $0 + ")"}  )
+		//Rad - Radians vs Degrees Toggle
     
   ]
   
@@ -111,7 +114,9 @@ class CalculatorBrain {
   private enum Operation {
     case Constant(Double)
     
-    case UnaryOperation((Double) -> Double, (String) -> String)
+		case NullaryOperation(() -> Double, (String) -> String)
+		
+		case UnaryOperation((Double) -> Double, (String) -> String)
     
     case BinaryOperation((Double, Double) -> Double, (String, String) -> String)
     
@@ -172,7 +177,11 @@ class CalculatorBrain {
           accumulator = value
           descriptionAccumulator = operationSymbol
         
-        case .UnaryOperation(let function, let descriptionFunction):
+				case .NullaryOperation(let function, let descriptionFunction):
+					accumulator = function()
+					descriptionAccumulator = descriptionFunction(String(accumulator))
+				
+				case .UnaryOperation(let function, let descriptionFunction):
           accumulator = function(accumulator)
           descriptionAccumulator = descriptionFunction(descriptionAccumulator)
         
